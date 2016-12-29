@@ -1,5 +1,6 @@
 defmodule HelloWorldTest.PlugConnectorTest do
   use ExUnit.Case
+  doctest HelloWorld.PlugConnector
   use Plug.Test
 
   @connector HelloWorld.PlugConnector
