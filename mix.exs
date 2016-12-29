@@ -26,6 +26,7 @@ defmodule HelloWorld.Mixfile do
     [
       {:cowboy, "~> 1.0.0"},
       {:plug, "~> 1.0"},
+      {:mix_test_watch, "~> 0.2", only: :dev},
     ]
   end
 end
