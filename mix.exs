@@ -1,4 +1,4 @@
-defmodule HelloWorld.Mixfile do
+defmodule TimeMachine.Mixfile do
   use Mix.Project
 
   def project do
@@ -18,7 +18,7 @@ defmodule HelloWorld.Mixfile do
   def application do
     [
       applications: [:logger, :cowboy, :plug],
-      mod: {HelloWorld.App, []},
+      mod: {TimeMachine.App, []},
     ]
   end
 

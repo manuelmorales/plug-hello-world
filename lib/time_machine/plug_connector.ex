@@ -1,17 +1,17 @@
-defmodule HelloWorld.PlugConnector do
+defmodule TimeMachine.PlugConnector do
   import Plug.Conn
 
   def init(options), do: options
 
   @doc ~S"""
-  Returns "Hello World"
+  Returns "TimeMachine World"
 
   ## Examples
 
   iex> request = Plug.Test.conn(:get, "/", "")
-  iex> response = HelloWorld.PlugConnector.call request, []
+  iex> response = TimeMachine.PlugConnector.call request, []
   iex> response.resp_body
-  "Hello world"
+  "TimeMachine world"
   iex> response.status
   200
 
@@ -20,10 +20,10 @@ defmodule HelloWorld.PlugConnector do
   def call(conn, _opts) do
     conn
     |> put_resp_content_type("text/plain")
-    |> send_resp(200, "Hello world")
+    |> send_resp(200, "TimeMachine world")
   end
 
   def start_link do
-    {:ok, _} = Plug.Adapters.Cowboy.http HelloWorld.PlugConnector, []
+    {:ok, _} = Plug.Adapters.Cowboy.http TimeMachine.PlugConnector, []
   end
 end

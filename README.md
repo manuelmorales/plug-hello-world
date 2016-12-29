@@ -1,7 +1,7 @@
-# HelloWorld Plug
+# TimeMachine Plug
 
-A basic hello world Elixir Plug connector that I wrote to get familiar with
-Elixir and Plug.
+A basic microservice that will return the time.
+Made with Elixir Plug connector to get familiar with
 
 Run with `mix run --no-halt`.
 Call with `curl localhost:4000`.

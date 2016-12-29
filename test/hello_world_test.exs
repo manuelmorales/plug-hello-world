@@ -1,6 +1,6 @@
-defmodule HelloWorldTest do
+defmodule TimeMachineTest do
   use ExUnit.Case
-  doctest HelloWorld
+  doctest TimeMachine
 
   test "the truth" do
     assert 1 + 1 == 2
