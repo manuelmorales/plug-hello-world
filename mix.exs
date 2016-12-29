@@ -10,7 +10,7 @@ defmodule HelloWorld.Mixfile do
       start_permanent: Mix.env == :prod,
       deps: deps(),
       aliases: [
-        test: "test --no-start"
+        test: "test --no-start",
       ],
     ]
   end
@@ -26,7 +26,7 @@ defmodule HelloWorld.Mixfile do
     [
       {:cowboy, "~> 1.0.0"},
       {:plug, "~> 1.0"},
-      {:mix_test_watch, "~> 0.2", only: :dev},
+      {:mix_test_watch, git: "git@github.com:lpil/mix-test.watch.git"},
     ]
   end
 end
