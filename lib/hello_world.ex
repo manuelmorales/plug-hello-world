@@ -1,4 +1,4 @@
-defmodule Redirector do
+defmodule HelloWorld do
   defmodule App do
     use Application
 
@@ -6,10 +6,10 @@ defmodule Redirector do
       import Supervisor.Spec, warn: false
 
       children = [
-        worker(Redirector.PlugConnector, [])
+        worker(HelloWorld.PlugConnector, [])
       ]
 
-      opts = [strategy: :one_for_one, name: Redirector.Supervisor]
+      opts = [strategy: :one_for_one, name: HelloWorld.Supervisor]
       Supervisor.start_link(children, opts)
     end
   end
@@ -30,7 +30,7 @@ defmodule Redirector do
     end
 
     def start_link do
-      {:ok, _} = Plug.Adapters.Cowboy.http Redirector.PlugConnector, []
+      {:ok, _} = Plug.Adapters.Cowboy.http HelloWorld.PlugConnector, []
     end
   end
 end

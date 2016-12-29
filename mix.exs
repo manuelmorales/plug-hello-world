@@ -1,8 +1,8 @@
-defmodule Redirector.Mixfile do
+defmodule HelloWorld.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :redirector,
+    [app: :hello_world,
      version: "0.1.0",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
@@ -13,7 +13,7 @@ defmodule Redirector.Mixfile do
   def application do
     [
       applications: [:logger, :cowboy, :plug],
-      mod: {Redirector.App, []},
+      mod: {HelloWorld.App, []},
     ]
   end
 
