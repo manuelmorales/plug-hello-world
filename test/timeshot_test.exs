@@ -1,6 +1,5 @@
 defmodule TimeMachineTest.TimeshotTest do
   use ExUnit.Case
-  import TimeMachine
 
   test "has a time" do
     timeshot = %TimeMachine.Timeshot{time: DateTime.utc_now}
