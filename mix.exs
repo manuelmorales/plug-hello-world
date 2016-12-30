@@ -27,6 +27,7 @@ defmodule TimeMachine.Mixfile do
       {:cowboy, "~> 1.0.0"},
       {:plug, "~> 1.0"},
       {:mix_test_watch, git: "git@github.com:lpil/mix-test.watch.git"},
+      {:poison, "~> 3.0"},
     ]
   end
 end
