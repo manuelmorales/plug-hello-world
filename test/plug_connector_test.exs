@@ -6,9 +6,8 @@ defmodule TimeMachineTest.PlugConnectorTest do
   @opts @connector.init([])
 
   test "returns JSON" do
-    type = do_request.resp_headers
-    |> Enum.find(&(elem(&1, 0) == "content-type"))
-    |> elem(1)
+    type = Plug.Conn.get_resp_header(do_request, "content-type")
+    |> List.first
     |> String.split(";")
     |> List.first
 
@@ -19,8 +18,11 @@ defmodule TimeMachineTest.PlugConnectorTest do
     assert do_request.status == 200
   end
 
-  test "returns the time" do
-    body = Poison.Parser.parse!(do_request.resp_body)
+  test "returns a time" do
+    do_request.resp_body
+    |> Poison.Parser.parse!
+    |> Map.get("time")
+    |> Calendar.DateTime.Parse.rfc3339_utc
   end
 
   defp do_request() do

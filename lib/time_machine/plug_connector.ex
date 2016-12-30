@@ -4,9 +4,11 @@ defmodule TimeMachine.PlugConnector do
   def init(options), do: options
 
   def call(conn, _opts) do
+    body = Poison.encode!(%{time: DateTime.utc_now()})
+
     conn
     |> put_resp_content_type("application/json")
-    |> send_resp(200, "{}")
+    |> send_resp(200, body)
   end
 
   def start_link do

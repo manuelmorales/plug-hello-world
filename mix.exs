@@ -17,7 +17,11 @@ defmodule TimeMachine.Mixfile do
 
   def application do
     [
-      applications: [:logger, :cowboy, :plug],
+      applications: [
+        :logger,
+        :cowboy,
+        :plug,
+      ],
       mod: {TimeMachine.App, []},
     ]
   end
@@ -28,6 +32,7 @@ defmodule TimeMachine.Mixfile do
       {:plug, "~> 1.0"},
       {:mix_test_watch, git: "git@github.com:lpil/mix-test.watch.git"},
       {:poison, "~> 3.0"},
+      {:calendar, "~> 0.16"},
     ]
   end
 end
