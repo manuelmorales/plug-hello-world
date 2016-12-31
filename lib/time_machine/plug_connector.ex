@@ -1,10 +1,11 @@
 defmodule TimeMachine.PlugConnector do
   import Plug.Conn
+  alias TimeMachine.{TimeshotsRepo, PlugConnector}
 
   def init(options), do: options
 
   def call(conn, _opts) do
-    body = Poison.encode! TimeMachine.TimeshotsRepo.pop
+    body = Poison.encode! TimeshotsRepo.pop
 
     conn
     |> put_resp_content_type("application/json")
@@ -12,6 +13,6 @@ defmodule TimeMachine.PlugConnector do
   end
 
   def start_link do
-    {:ok, _} = Plug.Adapters.Cowboy.http TimeMachine.PlugConnector, []
+    {:ok, _} = Plug.Adapters.Cowboy.http PlugConnector, []
   end
 end
