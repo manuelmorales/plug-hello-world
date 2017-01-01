@@ -34,5 +34,30 @@ defmodule TimeMachineTest.TimeshotsRepoTest do
 
       assert to_unix(timeshot.time) == to_unix(pushed_time)
     end
+
+    test "returns a Timeshot with the pushed time :count times" do
+      pushed_time = DateTime.from_unix!(0)
+      @subject.pushn %{time: pushed_time, count: 2}
+
+      timeshot = @subject.pop
+      assert to_unix(timeshot.time) == to_unix(pushed_time)
+
+      timeshot = @subject.pop
+      assert to_unix(timeshot.time) == to_unix(pushed_time)
+
+      timeshot = @subject.pop
+      assert_in_delta to_unix(timeshot.time), to_unix(utc_now), 1
+    end
+
+    test "returns a Timeshot with reduced count" do
+      pushed_time = DateTime.from_unix!(0)
+      @subject.pushn %{time: pushed_time, count: 2}
+
+      timeshot = @subject.pop
+      assert timeshot.count == 1
+
+      timeshot = @subject.pop
+      assert timeshot.count == 0
+    end
   end
 end
