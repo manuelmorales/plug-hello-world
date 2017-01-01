@@ -4,15 +4,19 @@ defmodule TimeMachine.TimeshotsRepo do
   end
 
   def pop do
-    if state = read do
-      case shot = decrease(state) do
+    state = read
+
+    if state == nil do
+      %TimeMachine.Timeshot{time: DateTime.utc_now}
+    else
+      shot = decrease(state)
+
+      case shot do
         %{ count: 0 } -> write(nil)
         shot -> write(shot)
       end
 
       shot
-    else
-      %TimeMachine.Timeshot{time: DateTime.utc_now}
     end
   end
 
